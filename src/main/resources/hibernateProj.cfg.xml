@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/mdm_as_db</property>-->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--<property name="connection.username">root</property>-->
+        <!--<property name="connection.password">420529</property>-->
+        <property name="current_session_context_class">thread</property>
+        <property name="c3p0.min_size">3</property>
+        <property name="c3p0.acquire_increment">3</property>
+        <property name="c3p0.max_size">300</property>
+        <property name="c3p0.idle_test_period">120</property>
+        <property name="c3p0.validate">true</property>
+        <property name="c3p0.max_statements">0</property>
+        <property name="c3p0.statementCacheNumDeferredCloseThreads">1</property>
+        <!--<property name="hibernate.show_sql">true</property>-->
+        <mapping class="data.proj.DBInfo"/>
+        <mapping class="data.proj.FileNameHolder"/>
+        <mapping class="data.proj.TbChannel"/>
+        <mapping class="data.proj.TbChannelData"/>
+        <mapping class="data.proj.TbDaData"/>
+        <mapping class="data.proj.TbDaDataAvg"/>
+        <mapping class="data.proj.TbDbData"/>
+        <mapping class="data.proj.TbDbDataAvg"/>
+        <mapping class="data.proj.TbDmData"/>
+        <mapping class="data.proj.TbDmDataAvg"/>
+        <mapping class="data.proj.TbDsData"/>
+        <mapping class="data.proj.TbDsDataAvg"/>
+        <mapping class="data.proj.TbDs2Data"/>
+        <mapping class="data.proj.TbDs2DataAvg"/>
+        <mapping class="data.proj.TbEventRecord"/>
+        <mapping class="data.proj.TbFlData"/>
+        <mapping class="data.proj.TbFlDataAvg"/>
+        <mapping class="data.proj.TbGroup"/>
+        <mapping class="data.proj.TbHlData"/>
+        <mapping class="data.proj.TbHlDataAvg"/>
+        <mapping class="data.proj.TbImageMeta"/>
+        <mapping class="data.proj.TbMonitorArea"/>
+        <mapping class="data.proj.TbMonitorType"/>
+        <mapping class="data.proj.TbMpData"/>
+        <mapping class="data.proj.TbMpDataAvg"/>
+        <mapping class="data.proj.TbRgData"/>
+        <mapping class="data.proj.TbRgDataAvg"/>
+        <!--<mapping class="data.proj.TbSensor"/>-->
+        <mapping class="data.proj.TbSensorAttri"/>
+        <mapping class="data.proj.TbSensorWarnValue"/>
+        <mapping class="data.proj.TbSocket"/>
+        <mapping class="data.proj.TbStData"/>
+        <mapping class="data.proj.TbStDataAvg"/>
+        <mapping class="data.proj.TbSmcData"/>
+        <mapping class="data.proj.TbSmcDataAvg"/>
+        <!--<mapping class="data.proj.TbTableinfo"/>-->
+        <mapping class="data.proj.TbTprData"/>
+        <mapping class="data.proj.TbTprDataAvg"/>
+        <mapping class="data.proj.TbTpsData"/>
+        <mapping class="data.proj.TbTpsDataAvg"/>
+        <mapping class="data.proj.TbTps2Data"/>
+        <mapping class="data.proj.TbTps2DataAvg"/>
+        <mapping class="data.proj.TbTps2KonwnPoint"/>
+        <mapping class="data.proj.TbTps2ObserverStation"/>
+        <mapping class="data.proj.TbTps2Project"/>
+        <!--<mapping class="data.proj.TbUser"/>-->
+        <mapping class="data.proj.TbWarnLog"/>
+        <mapping class="data.proj.TbWarnPerson"/>
+        <mapping class="data.proj.TbWarnRevise"/>
+        <mapping class="data.proj.TbWarnValue"/>
+        <mapping class="data.proj.TbWeatherData"/>
+        <mapping class="data.proj.TbWeatherDataAvg"/>
+        <mapping class="data.proj.TbWtData"/>
+        <mapping class="data.proj.TbWtDataAvg"/>
+        <mapping class="data.proj.TbTdData"/>
+        <mapping class="data.proj.TbTdDataAvg"/>
+        <mapping class="data.proj.ExtremeSensorWarnLogCount"/>
+        <mapping class="data.proj.SensorWarnLogCount"/>
+        <mapping class="data.proj.TbVolume"/>
+        <mapping class="data.proj.Check"/>
+        <mapping class="data.proj.Record"/>
+        <mapping class="data.proj.CheckPerson"/>
+        <mapping class="data.proj.CheckImage"/>
+        <mapping class="data.proj.CheckVideo"/>
+        <mapping class="data.response.results.ProjWarnCountAndLevelResult"/>
+        <mapping class="data.response.results.ExtremeDmData"/>
+        <mapping class="data.response.results.ExtremeMpData"/>
+        <mapping class="data.response.results.ExtremeTps2Data"/>
+        <mapping class="data.response.results.ExtremeTpsData"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

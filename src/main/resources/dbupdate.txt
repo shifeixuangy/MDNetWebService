@@ -1,0 +1,103 @@
+## 特别注意：SQL语句中一定不要包含数据库名称
+[
+{"From":"0.9.0","To":"1.0.0",
+"Script":"CREATE TABLE `test_table` (
+            `ID` INT NOT NULL AUTO_INCREMENT,
+            `Name` VARCHAR(45) NULL,
+            PRIMARY KEY (`ID`));"},
+{"From":"1.0.0","To":"1.1.0",
+"Script":"ALTER TABLE `tb_monitor_type`
+          ADD COLUMN `DisplayOrder` INT NOT NULL DEFAULT 0 AFTER `Values`;"},
+{"From":"1.1.0","To":"1.2.0",
+ "Script":"ALTER TABLE `tb_warn_person`
+                    ADD COLUMN `CompanyID` INT NULL AFTER `Position`,
+                    ADD INDEX `warn_person_company_idx` (`CompanyID` ASC);
+                    ALTER TABLE `tb_warn_person`
+                    ADD CONSTRAINT `warn_person_company`
+                      FOREIGN KEY (`CompanyID`)
+                      REFERENCES `mdm_common_db`.`tb_company` (`ID`)
+                      ON DELETE SET NULL
+                      ON UPDATE CASCADE;
+"},
+  {"From":"1.2.0","To":"1.3.0",
+   "Script":"CREATE TABLE `tb_tps2_data` (
+               `ID` int(11) NOT NULL AUTO_INCREMENT,
+               `SensorID` int(11) NOT NULL,
+               `Time` datetime NOT NULL,
+               `Disp_X` double NOT NULL,
+               `Disp_Y` double NOT NULL,
+               `Disp_H` double NOT NULL,
+               `Velocity_X` double NOT NULL,
+               `Velocity_Y` double NOT NULL,
+               `Velocity_H` double NOT NULL,
+               `Azimuth` double NOT NULL,
+               `HzAngle` double NOT NULL,
+               `VertAngle` double NOT NULL,
+               `Distance` double NOT NULL,
+               `RawDisp_X` double NOT NULL,
+               `RawDisp_Y` double NOT NULL,
+               `RawDisp_H` double NOT NULL,
+               PRIMARY KEY (`ID`),
+               UNIQUE KEY `ID` (`ID`),
+               KEY `SensorID` (`SensorID`),
+               CONSTRAINT `fk_tps2_sensor` FOREIGN KEY (`SensorID`) REFERENCES `tb_sensor_attri` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
+             ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+             CREATE TABLE `tb_tps2_data_avg` (
+               `ID` int(11) NOT NULL AUTO_INCREMENT,
+               `SensorID` int(11) NOT NULL,
+               `Time` datetime NOT NULL,
+               `Disp_X` double NOT NULL,
+               `Disp_Y` double NOT NULL,
+               `Disp_H` double NOT NULL,
+               `Velocity_X` double NOT NULL,
+               `Velocity_Y` double NOT NULL,
+               `Velocity_H` double NOT NULL,
+               `Azimuth` double NOT NULL,
+               `HzAngle` double NOT NULL,
+               `VertAngle` double NOT NULL,
+               `Distance` double NOT NULL,
+               `RawDisp_X` double NOT NULL,
+               `RawDisp_Y` double NOT NULL,
+               `RawDisp_H` double NOT NULL,
+               PRIMARY KEY (`ID`),
+               UNIQUE KEY `ID` (`ID`),
+               KEY `SensorID` (`SensorID`),
+               CONSTRAINT `fk_tps2_avg_sensor` FOREIGN KEY (`SensorID`) REFERENCES `tb_sensor_attri` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
+             ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+             CREATE TABLE `tb_tps2_konwn_point` (
+               `ID` int(11) NOT NULL AUTO_INCREMENT,
+               `Name` varchar(45) NOT NULL,
+               `Disp_X` double DEFAULT NULL,
+               `Dsip_Y` double DEFAULT NULL,
+               `Disp_H` double DEFAULT NULL,
+               `Note` varchar(500) DEFAULT NULL,
+               PRIMARY KEY (`ID`)
+             ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+             CREATE TABLE `tb_tps2_observe_station` (
+               `ID` int(11) NOT NULL AUTO_INCREMENT,
+               `Name` varchar(100) NOT NULL,
+               `Disp_X` double DEFAULT NULL,
+               `Disp_Y` double DEFAULT NULL,
+               `Disp_H` double DEFAULT NULL,
+               `LookName` varchar(100) DEFAULT NULL,
+               `LookDisp_X` double DEFAULT NULL,
+               `LookDisp_Y` double DEFAULT NULL,
+               `LookDisp_H` double DEFAULT NULL,
+               `MachineHeight` double DEFAULT NULL,
+               `GlassHeight` double DEFAULT NULL,
+               `LookAzimuth` double DEFAULT NULL,
+               PRIMARY KEY (`ID`)
+             ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+             CREATE TABLE `tb_tps2_project` (
+               `ID` int(11) NOT NULL AUTO_INCREMENT,
+               `ProjName` varchar(45) DEFAULT NULL,
+               `Operator` varchar(45) DEFAULT NULL,
+               `ProjTime` datetime DEFAULT NULL,
+               `Weather` varchar(255) DEFAULT NULL,
+               `ProjInfo` text,
+               PRIMARY KEY (`ID`)
+             ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;"},
+            {"From":"1.3.0","To":"1.4.0",
+             "Script":"ALTER TABLE `tb_monitor_type`  ADD COLUMN `ShowInterval` INT NOT NULL DEFAULT 24 AFTER `DisplayOrder`;"
+             }
+]

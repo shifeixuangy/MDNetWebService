@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="c3p0.min_size">3</property>
+        <property name="c3p0.acquire_increment">3</property>
+        <property name="c3p0.max_size">300</property>
+        <property name="c3p0.idle_test_period">120</property>
+        <property name="c3p0.validate">true</property>
+        <property name="c3p0.max_statements">0</property>
+        <property name="c3p0.statementCacheNumDeferredCloseThreads">1</property>
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/mdm_common_db?useUnicode=true&amp;characterEncoding=UTF-8</property>-->
+        <!--<property name="connection.url">jdbc:mysql://172.168.5.39:3306/mdm_common_db?useUnicode=true&amp;characterEncoding=UTF-8</property>-->
+        <!--<property name="connection.url">jdbc:mysql://192.168.1.101:3306/mdm_common_db?useUnicode=true&amp;characterEncoding=UTF-8</property>-->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--<property name="connection.username">root</property>-->
+        <!--<property name="connection.password">420529</property>-->
+        <property name="current_session_context_class">thread</property>
+        <property name="hibernate.show_sql">false</property>
+        <mapping class="data.common.TbCompany"/>
+        <mapping class="data.common.TbLevel"/>
+        <mapping class="data.common.TbLog"/>
+        <mapping class="data.common.TbProjInfo"/>
+        <mapping class="data.common.TbProjManager"/>
+        <mapping class="data.common.TbProjPower"/>
+        <mapping class="data.common.TbProjType"/>
+        <mapping class="data.common.TbRegion"/>
+        <mapping class="data.common.TbRegionManager"/>
+        <mapping class="data.common.TbUser"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

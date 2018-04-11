@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This web.xml file is not required when using Servlet 3.0 container,
+     see implementation details http://jersey.java.net/nonav/documentation/latest/jax-rs.html -->
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>Medo,filters,interceptors,medoresources,customer.serialize,medoresources.tps2</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>log4jInit</servlet-name>
+        <servlet-class>init.config.Log4jInit</servlet-class>
+        <init-param>
+            <param-name>log4j_init_path</param-name>
+            <param-value>WEB-INF\classes\log4j.properties</param-value>
+        </init-param>
+        <init-param>
+            <param-name>log4j_file_path</param-name>
+            <param-value>WEB-INF\logs\</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>pushInit</servlet-name>
+        <servlet-class>init.config.PushInit</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>serviceInit</servlet-name>
+        <servlet-class>init.config.ServiceInit</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <!--<servlet>-->
+        <!--<servlet-name>jspservlet</servlet-name>-->
+        <!--<jsp-file>/index.jsp</jsp-file>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>jspservlet</servlet-name>-->
+        <!--<url-pattern>index</url-pattern>-->
+    <!--</servlet-mapping>-->
+    
+    <servlet-mapping>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <url-pattern>/api/v1/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>log4jInit</servlet-name>
+        <url-pattern>abc/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pushInit</servlet-name>
+        <url-pattern>debug/createWarn</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>serviceInit</servlet-name>
+        <url-pattern>def/*</url-pattern>
+    </servlet-mapping>
+</web-app>
